@@ -18,6 +18,8 @@ df_predict <- data_frame(a_cancer = 1000,
 
 prediction <- predict(model, newdata = df_predict)
 
+prediction
+
 to_plot <- df %>% gather(key = "disease", 
                          value = "cases", 
                          a_cancer, 
@@ -31,7 +33,7 @@ ggplot(to_plot, aes(cases, deaths)) +
   geom_point(aes(color = disease)) + 
   geom_smooth(aes(color = disease), method='lm', formula = y ~ x, se = F) +
   geom_vline(data = vlines, aes(xintercept = prediction, color = disease)) +
-  geom_hline(aes(yintercept = 540.7602))
+  geom_hline(aes(yintercept = prediction))
 
 
   
